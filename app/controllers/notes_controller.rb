@@ -11,9 +11,16 @@ class NotesController < ApplicationController
   end
 
   def update
+    if @note.update(note_params)
+      render json: {  message: "Nota atualizada com sucesso!" }, status: :ok
+    else
+      render json: { message: "Error ao atualizar a nota!" }, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    @nota.destroy
+    render json: { message: "Nota removida com sucesso!" }, status: :ok
   end
 
   def index
