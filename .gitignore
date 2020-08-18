@@ -296,3 +296,9 @@ build-iPhoneSimulator/
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/ruby,visualstudiocode,sass,node,yarn,rails
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

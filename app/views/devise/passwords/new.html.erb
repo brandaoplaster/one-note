@@ -1,0 +1,36 @@
+<section class="container-full">
+
+  <div class="content-recover">
+    <div class="content-animation">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= image_tag('logo.png') %>
+        
+        <h1>Recuperar Senha</h1>
+
+        <div class="field">
+          <div class="control has-icons-left">
+            <%= f.email_field :email, class: "input is-rounded", placeholder: "E-mail" %>
+            <span class="icon is-primary is-small is-left">
+              <i class="fa fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="actions is-centered is-focus-padded">
+          <%= f.submit "Recuperar", class: "button is-link is-info is-medium is-fullwidth" %>
+        </div>
+        
+        <div class="container-links">
+          <div class="content-link">
+              <span class="icon is-small is-left item">
+                <i class="fa fa-sign-in fa-lg"></i>
+              </span>
+              <%= link_to "Log in", new_session_path(resource_name), :class => "item" %><br />
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</section>
