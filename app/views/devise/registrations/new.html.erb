@@ -1,52 +1,48 @@
-<section class="hero is-fullheight is-dark">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="card is-rounded">
-          <div class="card-content">
-            
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <%= devise_error_messages! %>
+<section class="container-full">
 
-              <div class="field">
-                <label class="label">Email Address</label>
-                <div class="control has-icons-left">
-                  <%= f.email_field :email, class: "input is-rounded", placeholder: "E-mail" %>
-                  <span class="icon is-primary is-small is-left">
-                    <i class="fa fa-envelope"></i>
-                  </span>
-                </div>
-              </div>
+  <div class="content">
+    <%= image_tag('c1.jpg', class: "image-background") %>
+  </div>
 
-              <div class="field">
-                <label class="label">Password</label>
-                <div class="control has-icons-left">
-                  <%= f.password_field :password, class: "input is-rounded", autocomplete: "off", placeholder: "Password" %>
-                  <span class="icon is-small is-left">
-                    <i class="fa fa-lock"></i>
-                  </span>
-                </div>
-              </div>
+  <div class="content">
+    <div class="content-animation">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <%= image_tag('logo.png') %>
+        
+        <h1>Faça seu log in</h1>
 
-              <div class="field">
-                <label class="label">Password Confirmation</label>
-                <div class="control has-icons-left">
-                  <%= f.password_field :password_confirmation, autocomplete: "off", class: "input is-rounded", placeholder: "Confirm password by retyping" %>
-                  <span class="icon is-small is-left">
-                    <i class="fa fa-lock"></i>
-                  </span>
-                </div>
-              </div>
-
-              <div class="actions is-centered is-focus-padded">
-                <%= f.submit "Sign Up", class: "button is-link is-info is-medium is-fullwidth" %>
-              </div>
-            <% end %>
-
-            <%= render "devise/shared/links" %>
+        <div class="field">
+          <div class="control has-icons-left">
+            <%= f.email_field :email, class: "input is-rounded", placeholder: "E-mail" %>
+            <span class="icon is-primary is-small is-left">
+              <i class="fa fa-envelope"></i>
+            </span>
           </div>
-        </div> 
-      </div>
+        </div>
+
+        <div class="field">
+          <div class="control has-icons-left">
+            <%= f.password_field :password, class: "input is-rounded", placeholder: "Password" %>
+            <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control has-icons-left">
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "input is-rounded", placeholder: "Password confirmation" %>
+            <span class="icon is-small is-left">
+              <i class="fa fa-lock"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="actions is-centered is-focus-padded">
+          <%= f.submit "Sing Up", class: "button is-link is-info is-medium is-fullwidth" %>
+        </div>
+        <%= render "devise/shared/links" %>
+      <% end %>
     </div>
   </div>
+
 </section>

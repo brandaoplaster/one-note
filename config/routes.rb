@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
+  root :to => redirect("/users/sign_in")
+  
   resources :notes, only: [:create, :update, :index, :show, :destroy]
   post '/users/:id/add_note/:note_id', to: 'users#add_note'
   delete '/users/:id/remove_note/:note_id', to: 'users#remove_note'
