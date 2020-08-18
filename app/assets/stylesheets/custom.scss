@@ -12,16 +12,30 @@
     max-width: 700px;
     margin-bottom: 0;
 
+    @keyframes appearFromRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
     .content-animation {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      animation: appearFromRight 3s;
+
     }
 
     img {
       flex: 1;
       background-size: cover;
+      animation: appearFromRight 1s;
     }
 
     form {
@@ -43,18 +57,46 @@
         color: #f4ede8;
       }
   
-      a {
+      .container-links {
         color: #f4ede8;
         display: block;
         margin-top: 24px;
         text-decoration: none;
-        transition: color 0.2s;
-  
-        &:hover {
-          color: #f4ede8;
+        align-items: center;
+
+        .content-link{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .item {
+            align-items: center;
+          }
+
+          > .item {
+            padding-left: 16px;
+          }
+        }
+
+        a, i {
+          color: #64B5F6;
+          display: block;
+          text-decoration: none;
+          transition: color 0.2s;
+          
+          &:hover {
+            color: #0f95d3;
+          }
+        }
+
+        > a {
+          color: #f4f4f4;
+
+          &:hover {
+            color: #cccccc;
+          }
         }
       }
     }
-
   }
 }
