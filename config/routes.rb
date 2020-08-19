@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  root :to => redirect("/users/sign_in")
+  devise_scope :user do
+    authenticated :user do
+      root 'notes#index', as: :authenticated_root
+    end
+  
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
   
   resources :notes, only: [:create, :update, :index, :show, :destroy]
   post '/users/:id/add_note/:note_id', to: 'users#add_note'
