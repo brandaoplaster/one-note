@@ -1,8 +1,11 @@
+// require("@rails/ujs").start();
+require("turbolinks").start();
+require("@rails/activestorage").start();
+
 import Vue from 'vue';
 import App from './app.vue';
 import VueResource from 'vue-resource';
 import TurbolinksAdapter from 'vue-turbolinks';
-
 
 Vue.use(VueResource);
 Vue.use(TurbolinksAdapter);
