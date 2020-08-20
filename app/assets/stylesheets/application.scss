@@ -1,7 +1,10 @@
-@import "bulma/css/bulma";
-@import 'font-awesome/css/font-awesome.css';
+@import "theme";
+@import "materialize";
+@import "material_icons";
 @import 'custom';
 @import 'password';
+
+
 
 * {
   margin: 0;
