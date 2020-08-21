@@ -1,52 +1,7 @@
 <template>
   <v-app>
-    <v-navigation-drawer clipped fixed  inset app :permanent="permanent" dark>
-      <v-list dense nav class="py-0">
-        <v-list-item two-line :class="miniVariant && 'px-0'">
-          <v-list-item-avatar>
-            <img src="https://randomuser.me/api/portraits/men/81.jpg">
-          </v-list-item-avatar>
+    <Sidebar></Sidebar>
 
-          <v-list-item-content>
-            <v-list-item-title>myemailthe@gmail.com</v-list-item-title>
-            <v-list-item-subtitle>brandaoplaster</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-
-        <v-divider></v-divider>
-
-        <v-list-item class="pa-1 ma-0 mt-6">
-          <v-col cols="12" sm="9" md="9">
-            <v-text-field
-              label="Search"
-            outlined
-            dense
-            ></v-text-field>
-          </v-col>
-          <div class="mb-3 pb-3">
-           <v-btn color="blue-grey" class="ma-0 white--text">
-              <v-icon right dark>mdi-magnify</v-icon>
-            </v-btn>
-          </div>
-        </v-list-item>
-
-        <v-divider></v-divider>
-
-         <v-list-item
-            v-for="item in items"
-            :key="item.title"
-            link
-          >
-
-            <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-      </v-list>
-    </v-navigation-drawer>
-
-   
     <v-main id="home">
       <v-container fluid ma-0 pa-1>
         <v-app-bar color="blue-grey darken-3" dark>
@@ -128,40 +83,12 @@ export default {
     source: String,
   },
     data: () => ({
-      drawerRight: null,
-      drawer: true,
-        items: [
-          { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-          { title: 'Photos', icon: 'mdi-image' },
-          { title: 'About', icon: 'mdi-help-box' },
-          { title: 'item 3', icon: 'mdi-help-box' },
-          { title: 'help', icon: 'mdi-help-box' },
-          { title: 'Ruby', icon: 'mdi-help-box' },
-          { title: 'React', icon: 'mdi-help-box' },
-        ],
-        color: 'primary',
-        colors: [
-          'dark',
-          'blue',
-          'success',
-          'red',
-          'teal',
-        ],
-        right: false,
-        permanent: true,
-        miniVariant: false,
-        expandOnHover: false,
-        background: false,
+      
     }),
 
   components: {
     Sidebar: () => import('../components/sidebar'),
   },
-  computed: {
-      bg () {
-        return this.background ? 'https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg' : undefined
-      },
-    },
 }
 </script>
 
