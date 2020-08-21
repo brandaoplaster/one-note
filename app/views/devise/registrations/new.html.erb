@@ -8,8 +8,7 @@
     <div class="content-animation">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
-        <%= image_tag('logo.png') %>
-        
+
         <h1>Faça seu log in</h1>
 
         <div class="field">
@@ -37,8 +36,8 @@
           </div>
         </div>
 
-        <div class="actions is-centered is-focus-padded">
-          <%= f.submit "Sing Up", class: "button is-link is-info is-medium is-fullwidth" %>
+        <div class="content-button">
+          <%= f.submit "Sing Up", class: "button-sing-up" %>
         </div>
         <%= render "devise/shared/links" %>
       <% end %>
