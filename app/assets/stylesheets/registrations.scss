@@ -95,6 +95,37 @@
         width: 100%;
         display: flex;
         flex-direction: column;
+        align-items: center;
+
+        .content-links {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column;
+
+          .button-link {
+            color: #2E7D32;
+            text-decoration: none;
+            align-items: center;
+            display: flex;
+          }
+
+          .button-link:hover {
+            color: #134916;
+          }
+
+          .registration {
+            margin-top: 32px;
+          }
+
+          .forgot {
+            color: #f4ede8;
+            margin-bottom: 36px;
+          }
+
+          .forgot:hover {
+            color: #666360;
+           }
+        }
       }
     }
 
