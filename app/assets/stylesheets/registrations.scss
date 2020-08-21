@@ -1,0 +1,108 @@
+.container-full {
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 0;
+
+    .content-form {
+      margin: 80px 22px 80px 4px;
+      text-align: center;
+      background: #232129;
+      border-radius: 18px;
+      border: 1px solid #232129;
+      padding: 16px;
+
+      .form-header {
+        padding: 8px;
+
+        .title-form {
+          font-size: 20px;
+          margin-bottom: 18px;
+          color: #f4ede8;
+        }
+      }
+
+      .form-body {
+        margin: 16px;
+        max-width: 700px;
+        padding: 16px;
+        min-width: 350px;
+
+        .field-content {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          margin-bottom: 15px;
+
+          .icon-field {
+            background: transparent;
+            border: 0;
+            color: #232129;
+            background: #666360;
+            border-top-left-radius: 18px;
+            border-bottom-left-radius: 18px;
+            border: 1px solid #666360;
+            min-width: 40px;
+            text-align: center;
+            height: 40px;
+            padding-top: 6px;
+          }
+
+          .input-field {
+            width: 100%;
+            padding: 10px;
+            outline: none;
+            flex: 1;
+            background: transparent;
+            border: 0;
+            color: #232129;
+            background: #666360;
+            border-top-right-radius: 18px;
+            border-bottom-right-radius: 18px;
+            border: 1px solid #666360;
+          }
+
+          .input-field::placeholder {
+            color: #232129;
+            font-weight: 600;
+          }
+        }
+
+        .button-field {
+          margin-top: 32px;
+          height: 32px;
+          width: 100%;
+          border-radius: 8px;
+          background: #2E7D32;
+          color: #232129;
+        }
+
+        .button-field:hover {
+          color: #f4ede8;
+          background: #134916;
+        }
+      }
+
+      .form-footer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    #content-image-left {
+      width: 100%;
+      flex: 1;
+      background-size: cover;
+      background-image: url('c1.jpg');
+    }
+  }
+}

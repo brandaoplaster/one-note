@@ -1,47 +1,41 @@
-<section class="container-full">
+<div class="container-full">
 
   <div class="content">
-    <%= image_tag('c1.jpg', class: "image-background") %>
+    <div id="content-image-left"></div>
   </div>
 
   <div class="content">
-    <div class="content-animation">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= devise_error_messages! %>
+    <div class="content-form">
+      <div class="form-header">
+        <h1>Faça seu cadastro</h1>
+      </div>
 
-        <h1>Faça seu log in</h1>
-
-        <div class="field">
-          <div class="control has-icons-left">
-            <%= f.email_field :email, class: "input is-rounded", placeholder: "E-mail" %>
-            <span class="icon is-primary is-small is-left">
-              <i class="fa fa-envelope"></i>
-            </span>
+      <div class="form-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <div class="field-content">
+            <i class="material-icons icon-field">email</i>
+            <%= f.email_field :email, class: "input-field", placeholder: "E-mail" %>
           </div>
-        </div>
 
-        <div class="field">
-          <div class="control has-icons-left">
-            <%= f.password_field :password, class: "input is-rounded", placeholder: "Password" %>
-            <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
+          <div class="field-content">
+            <i class="material-icons icon-field">lock_outline</i>
+            <%= f.password_field :password, class: "input-field", placeholder: "Password" %>
           </div>
-        </div>
 
-        <div class="field">
-          <div class="control has-icons-left">
-            <%= f.password_field :password_confirmation, autocomplete: "off", class: "input is-rounded", placeholder: "Password confirmation" %>
-            <span class="icon is-small is-left">
-              <i class="fa fa-lock"></i>
-            </span>
+          <div class="field-content">
+            <i class="material-icons icon-field">lock_outline</i>
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "input-field", placeholder: "Password confirmation" %>
           </div>
-        </div>
 
-        <div class="content-button">
-          <%= f.submit "Sing Up", class: "button-sing-up" %>
-        </div>
-        <%= render "devise/shared/links" %>
-      <% end %>
+          <div class="field">
+            <%= f.submit "Cadastrar", class: "button-field" %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="form-footer">
+        links
+      </div>
     </div>
   </div>
-
-</section>
+</div>
