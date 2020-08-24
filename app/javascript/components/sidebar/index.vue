@@ -43,7 +43,7 @@
           <v-icon>mdi-account-cog</v-icon>
         </v-btn>
 
-        <v-btn>
+        <v-btn href="/users/sign_out">
           <span>Sair</span>
           <v-icon>mdi-logout</v-icon>
         </v-btn>
@@ -91,6 +91,8 @@
       closeModalProfile() {
         this.showModalProfile = !this.showModalProfile;
       },
+
+
     },
   }
 </script>
