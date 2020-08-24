@@ -1,41 +1,54 @@
 <template>
   <v-app>
-    <v-btn class="mx-2" fab dark small color="primary">
-      <v-icon dark>mdi-minus</v-icon>
-    </v-btn>
+    <Sidebar></Sidebar>
 
-    <v-btn class="mx-2" fab dark small color="pink">
-      <v-icon dark>mdi-heart</v-icon>
-    </v-btn>
+    <v-main id="home">
+      <v-container fluid ma-0 pa-1>
+        <v-app-bar color="blue-grey darken-3" dark>
+          <v-btn class="ma-2" color="orange darken-2" dark>
+            <v-icon left>mdi-pencil</v-icon> Edita
+          </v-btn>
 
-    <v-btn class="mx-2" fab dark color="indigo">
-      <v-icon dark>mdi-plus</v-icon>
-    </v-btn>
+          <v-btn class="ma-2" color="orange darken-2" dark>
+            <v-icon left>mdi-content-save</v-icon> Salvar
+          </v-btn>
 
-    <v-btn class="mx-2" fab dark color="teal">
-      <v-icon dark>mdi-format-list-bulleted-square</v-icon>
-    </v-btn>
+          <v-btn class="ma-2" color="orange darken-2" dark>
+            <v-icon dark left>mdi-arrow-left</v-icon>Back
+          </v-btn>
 
-    <v-btn class="mx-2" fab dark large color="cyan">
-      <v-icon dark>mdi-pencil</v-icon>
-    </v-btn>
+          <v-btn class="ma-2" color="orange darken-2" dark>
+            <v-icon left>mdi-delete</v-icon> Delete
+          </v-btn>
 
-    <v-btn class="mx-2" fab dark large color="purple">
-      <v-icon dark>mdi-android</v-icon>
-    </v-btn>
+          <v-btn class="ma-2" color="orange darken-2" dark>
+            <v-icon left>mdi-share-variant</v-icon> Compartilha
+          </v-btn>          
+        
+        </v-app-bar>
+
+        <ShowNotes></ShowNotes>
+      </v-container>
+    </v-main>    
   </v-app>
 </template>
 
 <script>
 export default {
   name: 'App',
-  data: () => ({})
+  props: {
+    source: String,
+  },
+    data: () => ({
+      
+    }),
+
+  components: {
+    Sidebar: () => import('../components/sidebar'),
+    ShowNotes: () => import('../components/shownotes'),
+  },
 }
 </script>
 
 <style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
 </style>
