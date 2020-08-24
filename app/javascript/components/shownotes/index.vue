@@ -1,6 +1,5 @@
 <template>
   <v-container class="grey lighten-5">
-    <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
     <v-row>
       <v-col v-for="n in 9" :key="n" cols="6" md="4">
         <v-card class="pa-1" outlined tile>
@@ -19,7 +18,6 @@
           </v-card-text>
 
           <v-chip-group
-            v-model="selection"
             active-class="deep-purple accent-4 white--text"
             column
           >
@@ -33,18 +31,20 @@
               text
               color="deep-purple accent-4"
             >
-              Read
+              Editar
             </v-btn>
             <v-btn
               text
               color="deep-purple accent-4"
             >
-              Bookmark
+              Deletar
+            </v-btn>
+
+            <v-btn text color="deep-purple accent-4" @click="showModal = true">
+              Ler
             </v-btn>
             <v-spacer></v-spacer>
-            <v-btn icon>
-              <v-icon>mdi-heart</v-icon>
-            </v-btn>
+            
             <v-btn icon>
               <v-icon>mdi-share-variant</v-icon>
             </v-btn>
@@ -54,12 +54,31 @@
         </v-card>
       </v-col>
     </v-row>
-
+    
+    <ModelNotes  :showModal="showModal" @close-modal="closeModal"></ModelNotes>
   </v-container>
 </template>
 
 <script>
 export default {
-  
+  data: () => ({
+    showModal: false,
+  }),
+
+  methods: {
+    openModal() {
+      this.showModal = !this.showModal;
+    },
+
+    closeModal() {
+      this.showModal = !this.showModal;
+    }
+ 
+  },
+
+
+  components: {
+   ModelNotes: () => import('../modalNote'),
+  }
 }
 </script>

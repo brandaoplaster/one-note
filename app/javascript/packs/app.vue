@@ -28,7 +28,6 @@
         </v-app-bar>
 
         <ShowNotes></ShowNotes>
-        
       </v-container>
     </v-main>    
   </v-app>
