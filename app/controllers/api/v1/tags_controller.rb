@@ -1,4 +1,4 @@
-class TagsController < ApplicationController
+class Api::V1::TagsController < ApplicationController
 
   def add_to_note
     @tag = Tag.find_or_create_by(title: params[:title], user: current_user)
