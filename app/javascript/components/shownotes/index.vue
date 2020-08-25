@@ -55,7 +55,8 @@
       </v-col>
     </v-row>
     
-    <ModelNotes  :showModal="showModal" @close-modal="closeModal"></ModelNotes>
+    <model-notes  :showModal="showModal" @close-modal="closeModal"></model-notes>
+
   </v-container>
 </template>
 
@@ -63,6 +64,7 @@
 export default {
   data: () => ({
     showModal: false,
+   
   }),
 
   methods: {
@@ -72,13 +74,13 @@ export default {
 
     closeModal() {
       this.showModal = !this.showModal;
-    }
+    },
  
   },
 
 
   components: {
-   ModelNotes: () => import('../modalNote'),
+    ModelNotes: () => import('../modalNote'),
   }
 }
 </script>

@@ -38,41 +38,61 @@
       </v-list-item>
 
       <v-bottom-navigation absolute horizontal>
-        <v-btn text color="deep-purple accent-4">
+        <v-btn text color="deep-purple accent-4" @click="showModalProfile = true">
           <span>Perfil</span>
           <v-icon>mdi-account-cog</v-icon>
         </v-btn>
 
-        <v-btn>
+        <v-btn href="/users/sign_out">
           <span>Sair</span>
           <v-icon>mdi-logout</v-icon>
         </v-btn>
       </v-bottom-navigation>
 
     </v-list>
+
+    <modal-profile :showModalProfile="showModalProfile"
+      @close-modal-profile="closeModalProfile">
+    </modal-profile>
   </v-navigation-drawer>
 </template>
 
 <script>
   export default {
-    data () {
-      return {
-        items: [
-          { title: 'Ruby on rails', icon: 'mdi-view-dashboard' },
-          { title: 'Reactjs', icon: 'mdi-image' },
-          { title: 'Vuejs', icon: 'mdi-help-box' },
-          { title: 'Python', icon: 'mdi-help-box' },
-          { title: 'PHP', icon: 'mdi-help-box' },
-        ],
-        color: 'primary',
-        permanent: true,
-        miniVariant: false,
-      }
-    },
+    data: () => ({
+      items: [
+        { title: 'Ruby on rails', icon: 'mdi-view-dashboard' },
+        { title: 'Reactjs', icon: 'mdi-image' },
+        { title: 'Vuejs', icon: 'mdi-help-box' },
+        { title: 'Python', icon: 'mdi-help-box' },
+        { title: 'PHP', icon: 'mdi-help-box' },
+      ],
+      color: 'primary',
+      permanent: true,
+      miniVariant: false,
+      showModalProfile: false,
+    }),
+
     computed: {
       bg () {
         return this.background ? 'https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg' : undefined
       },
+    },
+
+    components: {
+      ModalProfile: () => import('../modalProfile'),
+    },
+
+    methods: {
+      openModalProfile() {
+        this.showModalProfile = !this.showModalProfile;
+      },
+
+      closeModalProfile() {
+        this.showModalProfile = !this.showModalProfile;
+      },
+
+
     },
   }
 </script>

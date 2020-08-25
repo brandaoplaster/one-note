@@ -1,10 +1,7 @@
 <template>
   <v-row justify="center">
 
-    <v-dialog
-      v-model="showModal"
-      max-width="290"
-    >
+    <v-dialog v-model="showModal" persistent max-width="290">
       <v-card>
         <v-card-title class="headline">Use Google's location service?</v-card-title>
 
@@ -15,20 +12,12 @@
         <v-card-actions>
           <v-spacer></v-spacer>
 
-          <v-btn
-            color="green darken-1"
-            text
-            @click.prevent="close"
-          >
-            Disagree
+          <v-btn color="green darken-1" text @click.prevent="close">
+            close
           </v-btn>
 
-          <v-btn
-            color="green darken-1"
-            text
-            @click.stop="close"
-          >
-            Agree
+          <v-btn color="green darken-1" text>
+            salva
           </v-btn>
         </v-card-actions>
       </v-card>
