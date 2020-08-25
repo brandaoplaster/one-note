@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <sidebar></sidebar>
-    <home></home>
+    <router-view :key="$router.fullPath"></router-view>
   </v-app>
 </template>
 
@@ -13,7 +13,6 @@ export default {
 
   components: {
     Sidebar: () => import('../components/sidebar'),
-    Home: () => import('../components/home');
   },
 }
 </script>
