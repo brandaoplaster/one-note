@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   devise_scope :user do
     authenticated :user do
-      root 'notes#index', as: :authenticated_root
+      root 'dashboards#index', as: :authenticated_root
     end
   
     unauthenticated do
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      get '/dashboard', to: 'dashboards#index', as: 'dashboard'
       resources :notes, only: [:create, :update, :index, :show, :destroy]
       post '/users/:id/add_note/:note_id', to: 'users#add_note'
       delete '/users/:id/remove_note/:note_id', to: 'users#remove_note'
