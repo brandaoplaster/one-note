@@ -1,14 +1,14 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Router from 'vue-router'
 import Home from '../components/home';
 
-Vue.use(VueRouter);
+Vue.use(Router);
 
-const router = new VueRouter({
+const router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '/api/v1/dashboard',
       component: Home,
     }
   ]
