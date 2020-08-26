@@ -26,7 +26,7 @@ class Api::V1::NotesController < ApplicationController
 
   def index
     @notes = current_user.notes
-    # render :json => @notes.to_json(:include => [:users, :tags])
+    render :json => @notes.to_json(:include => [:users, :tags])
   end
 
   def show
