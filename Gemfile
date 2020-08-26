@@ -26,6 +26,7 @@ gem 'devise'
 gem 'cancancan'
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
+gem 'foreman'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
