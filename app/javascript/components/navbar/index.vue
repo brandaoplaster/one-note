@@ -1,24 +1,45 @@
 <template>
-  <v-app-bar color="blue-grey darken-3" dark>
-    <v-btn class="ma-2" color="orange darken-2" dark>
-      <v-icon left>mdi-pencil</v-icon> Edita
-    </v-btn>
+  <v-app-bar dark>
+    <v-row class="mb-0 mt-6">
+      <v-col cols="12" sm="5">
+        <v-text-field
+          outlined
+          dense
+          label="Search title"
+          append-icon="mdi-magnify"
+        ></v-text-field>
 
-    <v-btn class="ma-2" color="orange darken-2" dark>
-      <v-icon left>mdi-content-save</v-icon> Salvar
-    </v-btn>
-
-    <v-btn class="ma-2" color="orange darken-2" dark>
-      <v-icon dark left>mdi-arrow-left</v-icon>Back
-    </v-btn>
-
-    <v-btn class="ma-2" color="orange darken-2" dark>
-      <v-icon left>mdi-delete</v-icon> Delete
-    </v-btn>
-
-    <v-btn class="ma-2" color="orange darken-2" dark>
-      <v-icon left>mdi-share-variant</v-icon> Compartilha
-    </v-btn>          
+      </v-col>
+    </v-row>
+    <v-btn class="ma-2" color="green darken-4" @click="openModalCreateNote">
+      <v-icon left>mdi-content-save</v-icon> Criar nota
+    </v-btn>      
   
+  <modal-create-note
+    :showModalCreateNote="showModalCreateNote"
+    @close-modal-create-note="closeModalCreateNote"
+  ></modal-create-note>
   </v-app-bar>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    showModalCreateNote: false,
+  }),
+
+  components: {
+    ModalCreateNote: () => import('../modalCreateNote'),
+  },
+
+  methods: {
+    openModalCreateNote() {
+      this.showModalCreateNote = !this.showModalCreateNote;
+    },
+
+    closeModalCreateNote() {
+      this.showModalCreateNote = !this.showModalCreateNote;
+    },
+  },
+}
+</script>
