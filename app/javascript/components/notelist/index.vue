@@ -47,7 +47,7 @@
               <v-icon>mdi-star-outline</v-icon>
             </v-btn>
 
-            <v-btn icon>
+            <v-btn icon @click="openModalShared">
               <v-icon>mdi-share-variant</v-icon>
             </v-btn>
           </v-card-actions>
@@ -58,7 +58,7 @@
     </v-row>
     
     <model-notes  :showModal="showModal" @close-modal="closeModal"></model-notes>
-
+    <modal-shared :showModalShared="showModalShared" @close-modal-shared="closeModalShared"></modal-shared>
   </v-container>
 </template>
 
@@ -66,6 +66,7 @@
 export default {
   data: () => ({
     showModal: false,
+    showModalShared: false,
   }),
 
   props: {
@@ -83,12 +84,20 @@ export default {
     closeModal() {
       this.showModal = !this.showModal;
     },
- 
+
+    openModalShared() {
+      this.showModalShared = !this.showModalShared;
+    },
+
+    closeModalShared() {
+      this.showModalShared = !this.showModalShared;
+    },
   },
 
 
   components: {
     ModelNotes: () => import('../modalNote'),
+    ModalShared: () => import('../modalshared'),
   }
 }
 </script>
