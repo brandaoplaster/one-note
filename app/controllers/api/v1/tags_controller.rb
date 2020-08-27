@@ -1,5 +1,10 @@
 class Api::V1::TagsController < ApplicationController
 
+  def index
+    @tags = current_user.tags
+    render :json => @tags.to_json()
+  end
+
   def add_to_note
     @tag = Tag.find_or_create_by(title: params[:title], user: current_user)
     @note = Note.find(params[:note_id])

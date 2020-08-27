@@ -31,9 +31,9 @@
 
       <v-divider class="pb-3"></v-divider>
 
-      <v-list-item v-for="item in items"  :key="item.title" link>
+      <v-list-item v-for="tag in tags"  :key="tag.id" link>
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title>#{{ tag.title }}</v-list-item-title>
           </v-list-item-content>
       </v-list-item>
 
@@ -58,26 +58,22 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
   export default {
     data: () => ({
-      items: [
-        { title: 'Ruby on rails', icon: 'mdi-view-dashboard' },
-        { title: 'Reactjs', icon: 'mdi-image' },
-        { title: 'Vuejs', icon: 'mdi-help-box' },
-        { title: 'Python', icon: 'mdi-help-box' },
-        { title: 'PHP', icon: 'mdi-help-box' },
-      ],
-      color: 'primary',
       permanent: true,
       miniVariant: false,
       showModalProfile: false,
     }),
 
-    computed: {
-      bg () {
-        return this.background ? 'https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg' : undefined
-      },
+    mounted() {
+      this.$store.dispatch('Tag/getTags');
     },
+
+    computed: mapState({
+      tags: state => state.Tag.tags,
+    }),
 
     components: {
       ModalProfile: () => import('../modalProfile'),
@@ -91,8 +87,6 @@
       closeModalProfile() {
         this.showModalProfile = !this.showModalProfile;
       },
-
-
     },
   }
 </script>
