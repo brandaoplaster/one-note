@@ -13,11 +13,12 @@
             <v-row>
               
               <v-col cols="12">
-                <v-text-field label="title" outlined required></v-text-field>
+                <v-text-field label="title" v-model="title" outlined required></v-text-field>
               </v-col>
 
               <v-col cols="12" sm="12">
                 <v-textarea
+                  v-model="body"
                   background-color="amber lighten-4"
                   label="Descrição da nota"
                   auto-grow
@@ -35,7 +36,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click.prevent="close">Close</v-btn>
-          <v-btn color="blue darken-1" text>
+          <v-btn color="blue darken-1" text @click="saveNote">
             Criar
           </v-btn>
         </v-card-actions>
@@ -46,18 +47,43 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
   export default {
     props: {
       showModalCreateNote: {
         required: true
       }
     },
-    data: () => ({}),
+    data: () => ({
+      title: '',
+      body: '',
+    }),
 
     methods: {
       close() {
         this.$emit('close-modal-create-note', !this.showModalCreateNote);
-      }            
+      },
+
+      getNotes(){
+        this.$store.dispatch('Note/getNotes');
+      },
+
+      saveNote(){
+        console.log('hi');
+        this.noteCreate({
+          title: this.title,
+          body: this.body,
+        });
+        this.title = '';
+        this.body = '';
+        this.getNotes();
+        this.close();
+      },
+
+      ...mapActions({
+        noteCreate: 'Note/create',
+      }),
     }
   }
 </script>

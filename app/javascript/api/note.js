@@ -16,7 +16,7 @@ export default {
 
   create(title, body) {
     return Http.post('/notes', {
-      notes: {
+      note: {
         title: title,
         body: body,
       }

@@ -23,6 +23,16 @@ const Note = {
         }).catch(error => reject(error.response));
       });
     },
+
+    create(context, { title, body }) {
+      return new Promise((resolve, reject) => {
+        Api.Note.create(title, body).then(response => {
+          console.log(response);
+          // context.commit('', response.data);
+          resolve();
+        }).catch(error => reject(error.response));
+      });
+    }
   },
 };
 
