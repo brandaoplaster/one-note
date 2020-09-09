@@ -18,13 +18,13 @@
         <v-col cols="12" sm="9" md="9">
           <v-text-field
             label="Search"
-          outlined
-          dense
+            outlined
+            dense
           ></v-text-field>
         </v-col>
         <div class="mb-3 pb-3">
         <v-btn color="blue-grey" class="ma-0 white--text">
-            <v-icon right dark>mdi-magnify</v-icon>
+          <v-icon right dark>mdi-magnify</v-icon>
           </v-btn>
         </div>
       </v-list-item>
@@ -32,9 +32,9 @@
       <v-divider class="pb-3"></v-divider>
 
       <v-list-item v-for="tag in tags"  :key="tag.id" link>
-          <v-list-item-content>
-            <v-list-item-title>#{{ tag.title }}</v-list-item-title>
-          </v-list-item-content>
+        <v-list-item-content>
+          <v-list-item-title>#{{ tag.title }}</v-list-item-title>
+        </v-list-item-content>
       </v-list-item>
 
       <v-bottom-navigation absolute horizontal>

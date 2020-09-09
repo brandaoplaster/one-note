@@ -6,50 +6,94 @@
           <v-card-title>
             
             <span class="title font-weight-light">{{ note.title }}</span>
+            
           </v-card-title>
 
           <v-card-text class="headline text-justify body-1">
             {{ note.body.slice(0, 30) + '...' }}
           </v-card-text>
 
-          <v-chip-group v-if="note.tags.length > 0" column class="ml-3">
-            <v-chip v-for="tag in note.tags" :key="tag.id">
+          <v-chip-group v-if="note.tags.length > 0" column class="ml-2">
+            <v-chip v-for="tag in note.tags" :key="tag.id"
+              class="ma-1"
+              close
+              color="green"
+              label
+              outlined
+              @click=""
+            >
               #{{tag.title}}
             </v-chip>
           </v-chip-group>
 
           <v-chip-group v-if="note.tags.length == 0" column class="ml-2">
-            <v-chip>
+            <v-chip class="ma-1"
+              color="gray"
+              label
+              outlined
+            >
               Nota sem tag
             </v-chip>
           </v-chip-group>
 
           <v-card-actions>
-            <v-btn
-              text
-              color="deep-purple accent-4"
-            >
-              Editar
-            </v-btn>
-            <v-btn
-              text
-              color="deep-purple accent-4"
-            >
-              Deletar
-            </v-btn>
 
-            <v-btn text color="deep-purple accent-4" @click="showModal = true">
-              Ler
-            </v-btn>
-            <v-spacer></v-spacer>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn icon @click="showModalAddTag = true" v-bind="attrs" v-on="on" text color="grey">
+                  <v-icon>mdi-pound</v-icon>
+                </v-btn>
+              </template>
+              <span>Add Tag</span>
+            </v-tooltip> 
             
-            <v-btn icon left>
-              <v-icon>mdi-star-outline</v-icon>
-            </v-btn>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn icon color="orange" v-bind="attrs" v-on="on">
+                  <v-icon>mdi-file-document-edit</v-icon>
+                </v-btn>
+              </template>
+              <span>Editar nota</span>
+            </v-tooltip> 
 
-            <v-btn icon @click="openModalShared">
-              <v-icon>mdi-share-variant</v-icon>
-            </v-btn>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn icon color="red" v-bind="attrs" v-on="on">
+                  <v-icon>mdi-delete</v-icon>
+                </v-btn>
+              </template>
+              <span>Deletar nota</span>
+            </v-tooltip> 
+
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn icon color="blue" @click="showModal = true" v-bind="attrs" v-on="on">
+                  <v-icon>mdi-book-open</v-icon>
+                </v-btn>
+              </template>
+              <span>Ler nota</span>
+            </v-tooltip> 
+
+
+            <v-spacer></v-spacer>
+
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn icon v-bind="attrs" v-on="on">
+                  <v-icon>mdi-star-outline</v-icon>
+                </v-btn>
+              </template>
+              <span>Favoritar nota</span>
+            </v-tooltip> 
+          
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn icon  @click="openModalShared" v-bind="attrs" v-on="on">
+                  <v-icon>mdi-share-variant</v-icon>
+                </v-btn>
+              </template>
+              <span>Compartilhar nota</span>
+            </v-tooltip> 
           </v-card-actions>
 
 
@@ -59,6 +103,7 @@
     
     <model-notes  :showModal="showModal" @close-modal="closeModal"></model-notes>
     <modal-shared :showModalShared="showModalShared" @close-modal-shared="closeModalShared"></modal-shared>
+    <modal-add-tag :showModalAddTag="showModalAddTag" @close-modal-add-tag="closeModalTag"></modal-add-tag>
   </v-container>
 </template>
 
@@ -67,6 +112,7 @@ export default {
   data: () => ({
     showModal: false,
     showModalShared: false,
+    showModalAddTag: false,
   }),
 
   props: {
@@ -92,12 +138,21 @@ export default {
     closeModalShared() {
       this.showModalShared = !this.showModalShared;
     },
+
+    openModalTag() {
+      this.showModalAddTag = !this.showModalAddTag;
+    },
+
+    closeModalTag() {
+      this.showModalAddTag = !this.showModalAddTag;
+    }
   },
 
 
   components: {
     ModelNotes: () => import('../modalNote'),
     ModalShared: () => import('../modalshared'),
+    ModalAddTag: () => import('../modalAddTag'),
   }
 }
 </script>
