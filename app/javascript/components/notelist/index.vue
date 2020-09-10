@@ -67,7 +67,7 @@
 
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
-                <v-btn icon color="blue" @click="showModal = true" v-bind="attrs" v-on="on">
+                <v-btn icon color="blue" @click="openModal(note)" v-bind="attrs" v-on="on">
                   <v-icon>mdi-book-open</v-icon>
                 </v-btn>
               </template>
@@ -101,7 +101,7 @@
       </v-col>
     </v-row>
     
-    <model-notes  :showModal="showModal" @close-modal="closeModal"></model-notes>
+    <model-notes :selectedNote="selectedNote"  :showModal="showModal" @close-modal="closeModal"></model-notes>
     <modal-shared :showModalShared="showModalShared" @close-modal-shared="closeModalShared"></modal-shared>
     <modal-add-tag :showModalAddTag="showModalAddTag" @close-modal-add-tag="closeModalTag"></modal-add-tag>
   </v-container>
@@ -113,6 +113,7 @@ export default {
     showModal: false,
     showModalShared: false,
     showModalAddTag: false,
+    selectedNote: {},
   }),
 
   props: {
@@ -123,8 +124,9 @@ export default {
   },
 
   methods: {
-    openModal() {
+    openModal(note) {
       this.showModal = !this.showModal;
+      this.selectedNote = note;
     },
 
     closeModal() {
