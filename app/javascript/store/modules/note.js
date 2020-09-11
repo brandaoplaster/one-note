@@ -11,6 +11,11 @@ const Note = {
     NOTES(state, notes) {
       state.notes = notes;
     },
+    
+    REMOVE_NOTE(state, id) {
+      index = state.notes.findIndex(note => note.id === id);
+      state.notes.splice(index, 1);
+    }
   },
 
   actions: {
@@ -29,6 +34,16 @@ const Note = {
         Api.Note.create(title, body).then(response => {
           console.log(response);
           // context.commit('', response.data);
+          resolve();
+        }).catch(error => reject(error.response));
+      });
+    },
+
+    remove(context, { id }) {
+      return new Promise((resolve, reject) => {
+        Api.Note.destroy(id).then(response => {
+          console.log(response);
+          context.commit('REMOVE_NOTE', id);
           resolve();
         }).catch(error => reject(error.response));
       });

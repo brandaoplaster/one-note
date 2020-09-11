@@ -58,7 +58,7 @@
 
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
-                <v-btn icon color="red" v-bind="attrs" v-on="on">
+                <v-btn icon color="red" v-bind="attrs" v-on="on" @click="deleteNote(note.id)">
                   <v-icon>mdi-delete</v-icon>
                 </v-btn>
               </template>
@@ -108,6 +108,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   data: () => ({
     showModal: false,
@@ -147,7 +149,20 @@ export default {
 
     closeModalTag() {
       this.showModalAddTag = !this.showModalAddTag;
-    }
+    },
+
+    getNotes(){
+      this.$store.dispatch('Note/getNotes');
+    },
+
+    deleteNote(id) {
+      this.noteRemove({ id });
+      this.getNotes()
+    },
+
+    ...mapActions({
+      noteRemove: 'Note/remove',
+    }),
   },
 
 
