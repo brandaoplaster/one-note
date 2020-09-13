@@ -15,7 +15,7 @@
                   </v-col>
 
                   <v-col cols="3" class="ma-0 pl-1 ">
-                    <v-btn large color="green" @click="" class="mt-1">Salvar</v-btn>
+                    <v-btn large color="green" @click="createTag" class="mt-1">Salvar</v-btn>
                   </v-col>
                 </v-row>
               </v-col>
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   data: () => ({
@@ -62,6 +62,20 @@ export default {
     close() {
       this.$emit('close-modal-add-tag', !this.showModalAddTag)
     },
+
+    createTag() {
+      this.tagCreate({
+        title: this.title,
+      });
+      this.title = '';
+      this.getTags();
+      this.close();
+    },
+
+    ...mapActions({
+      tagCreate: 'Tag/create',
+      getTags: 'Tag/getTags',
+    }),
   },
 
   mounted() {

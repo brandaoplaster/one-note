@@ -22,7 +22,15 @@ const Tag = {
           resolve();
         }).catch(error => reject(error.response));
       });
-    }
+    },
+
+    create(context, { title }) {
+      return new Promise((resolve, reject) => {
+        Api.Tag.create(title).then(response => {
+          resolve();
+        }).catch(error => reject(error.response));
+      });
+    },
   },
 };
 
