@@ -31,6 +31,14 @@ const Tag = {
         }).catch(error => reject(error.response));
       });
     },
+
+    remove(context, { id, note_id }) {
+      return new Promise((resolve, reject) => {
+        Api.Tag.delete(id, note_id).then(response => {
+          resolve();
+        }).catch(error => reject(error.response));
+      });
+    }
   },
 };
 

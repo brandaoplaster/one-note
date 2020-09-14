@@ -16,13 +16,18 @@
           <v-chip-group v-if="note.tags.length > 0" column class="ml-2">
             <v-chip v-for="tag in note.tags" :key="tag.id"
               class="ma-1"
-              close
               color="green"
               label
               outlined
               @click=""
             >
               #{{tag.title}}
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-icon right @click="removeTag(tag.id)" v-bind="attrs" v-on="on">mdi-close-circle</v-icon>
+                </template>
+                <span>Remove Tag</span>
+              </v-tooltip>
             </v-chip>
           </v-chip-group>
 
@@ -155,13 +160,21 @@ export default {
       this.$store.dispatch('Note/getNotes');
     },
 
+    removeTag(id) {
+      this.removeTag({
+        id: id,
+      });
+      this.getNotes();
+    },
+
     deleteNote(id) {
       this.noteRemove({ id });
-      this.getNotes()
+      this.getNotes();
     },
 
     ...mapActions({
       noteRemove: 'Note/remove',
+      removeTag: 'Tag/remove',
     }),
   },
 

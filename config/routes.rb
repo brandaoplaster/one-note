@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/dashboard', to: 'dashboards#index', as: 'dashboard'
       resources :notes, only: [:create, :update, :index, :show, :destroy]
-      resources :tags, only: [:index, :create]
+      resources :tags, only: [:index, :create, :destroy]
       post '/users/:id/add_note/:note_id', to: 'users#add_note'
       delete '/users/:id/remove_note/:note_id', to: 'users#remove_note'
       
