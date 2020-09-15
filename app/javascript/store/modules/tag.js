@@ -32,9 +32,9 @@ const Tag = {
       });
     },
 
-    remove(context, { id, note_id }) {
+    delete(context, { id }) {
       return new Promise((resolve, reject) => {
-        Api.Tag.delete(id, note_id).then(response => {
+        Api.Tag.delete(id).then(response => {
           resolve();
         }).catch(error => reject(error.response));
       });

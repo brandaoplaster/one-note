@@ -24,19 +24,27 @@
                 <v-list-item v-for="tag in tags" :key="tag.id">
                   <v-chip
                     class="ma-2"
-                    color="black"
+                    color="teal accent-4"
                     label
-                    text-color="white"
+                    outlined
+                    text-color="green darken-3"
                   >
-                    <v-icon left>mdi-label</v-icon>
                     {{tag.title}}
+                    <v-tooltip bottom>
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-icon right @click="removeTag(tag.id)" v-bind="attrs" v-on="on">
+                          mdi-close-circle
+                        </v-icon>
+                      </template>
+                      <span>Remove Tag</span>
+                    </v-tooltip>
                   </v-chip>
                 </v-list-item>
               </v-col>
             </v-row>
 
           <v-card-actions>
-            <v-btn color="green text-white" @click="close">Fecha</v-btn>
+            <v-btn color="green" text-color="white" @click="close">Fecha</v-btn>
           </v-card-actions>
         </v-card-text>
       </v-card>
@@ -72,9 +80,17 @@ export default {
       this.close();
     },
 
+    removeTag(id) {
+      this.deleteTag({
+        id: id
+      });
+      this.getTags();
+    },
+
     ...mapActions({
       tagCreate: 'Tag/create',
       getTags: 'Tag/getTags',
+      deleteTag: 'Tag/delete',
     }),
   },
 

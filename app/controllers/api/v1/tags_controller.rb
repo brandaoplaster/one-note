@@ -1,5 +1,5 @@
 class Api::V1::TagsController < ApplicationController
-  before_action :set_tags, only: [:update, :destroy]
+  before_action :set_tag, only: [:update, :destroy]
 
   def index
     @tags = current_user.tags
@@ -15,11 +15,7 @@ class Api::V1::TagsController < ApplicationController
   end
 
   def destroy
-    @tag = Tag.find_by(title: params[:title], user: current_user)
-    @note = Note.find(params[:note_id])
-    @note.tags.delete(@tag.id)
     @tag.destroy if @tag.notes.count == 0
-
     render json: { message: "Tag removida com sucesso!" }, status: :ok
   end
 
@@ -30,6 +26,6 @@ class Api::V1::TagsController < ApplicationController
     end
 
     def set_tag
-      @note = Note.find(params[:note_id])
+      @tag = Tag.find(params[:id])
     end
 end
