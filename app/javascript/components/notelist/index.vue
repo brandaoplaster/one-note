@@ -45,7 +45,7 @@
 
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
-                <v-btn icon @click="showModalAddTag = true" v-bind="attrs" v-on="on" text color="grey">
+                <v-btn icon @click="openModalAddTag(note.id)" v-bind="attrs" v-on="on" text color="grey">
                   <v-icon>mdi-pound</v-icon>
                 </v-btn>
               </template>
@@ -108,7 +108,7 @@
     
     <model-notes :selectedNote="selectedNote"  :showModal="showModal" @close-modal="closeModal"></model-notes>
     <modal-shared :showModalShared="showModalShared" @close-modal-shared="closeModalShared"></modal-shared>
-    <modal-add-tag :showModalAddTag="showModalAddTag" @close-modal-add-tag="closeModalTag"></modal-add-tag>
+    <modal-add-tag :selectedNoteId="selectedNoteId" :showModalAddTag="showModalAddTag" @close-modal-add-tag="closeModalTag"></modal-add-tag>
   </v-container>
 </template>
 
@@ -121,6 +121,7 @@ export default {
     showModalShared: false,
     showModalAddTag: false,
     selectedNote: {},
+    selectedNoteId: '',
   }),
 
   props: {
@@ -158,6 +159,11 @@ export default {
 
     getNotes(){
       this.$store.dispatch('Note/getNotes');
+    },
+
+    openModalAddTag(note_id) {
+      this.showModalAddTag = true;
+      this.selectedNoteId = note_id;
     },
 
     removeTag(id) {

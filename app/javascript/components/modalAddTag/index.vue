@@ -32,11 +32,11 @@
                     {{tag.title}}
                     <v-tooltip bottom>
                       <template v-slot:activator="{ on, attrs }">
-                        <v-icon right @click="removeTag(tag.id)" v-bind="attrs" v-on="on">
+                        <v-icon right @click="linkTagToNote(tag.id)" v-bind="attrs" v-on="on">
                           mdi-close-circle
                         </v-icon>
                       </template>
-                      <span>Remove Tag</span>
+                      <span>Adicionar Tag</span>
                     </v-tooltip>
                   </v-chip>
                 </v-list-item>
@@ -63,6 +63,9 @@ export default {
   props: {
     showModalAddTag: {
       required: true
+    },
+    selectedNoteId: {
+      required: true
     }
   },
 
@@ -80,6 +83,14 @@ export default {
       this.close();
     },
 
+    linkTagToNote(id) {
+      this.addTagNote({
+        tag_id: id,
+        note_id: this.selectedNoteId,
+      });
+      this.getTags();
+    },
+
     removeTag(id) {
       this.deleteTag({
         id: id
@@ -91,6 +102,7 @@ export default {
       tagCreate: 'Tag/create',
       getTags: 'Tag/getTags',
       deleteTag: 'Tag/delete',
+      addTagNote: 'TagNote/addTagNote',
     }),
   },
 
