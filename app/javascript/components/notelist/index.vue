@@ -1,5 +1,8 @@
 <template>
-  <v-container class="grey lighten-5">
+  <v-container class="grey lighten-5 pt-0">
+    <v-row>
+      <list-favorite></list-favorite>
+    </v-row>
     <v-row v-if="notes.length > 0">
       <v-col v-for="note in notes" :key="note.id" cols="6" md="4">
         <v-card class="pa-1" outlined tile>
@@ -189,6 +192,7 @@ export default {
     ModelNotes: () => import('../modalNote'),
     ModalShared: () => import('../modalshared'),
     ModalAddTag: () => import('../modalAddTag'),
+    ListFavorite: () => import('../favorite'),
   }
 }
 </script>
