@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :notes, dependent: :delete_all
   has_many :tags, dependent: :delete_all
+  has_many :favorites, dependent: :destroy
 end
