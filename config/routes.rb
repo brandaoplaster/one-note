@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get 'favorites/index'
+      get 'favorites/create'
+      get 'favorites/destroy'
+    end
+  end
   devise_for :users
   devise_scope :user do
     authenticated :user do
