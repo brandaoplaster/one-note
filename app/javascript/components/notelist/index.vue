@@ -87,7 +87,7 @@
 
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
-                <v-btn icon v-bind="attrs" v-on="on">
+                <v-btn icon @click="favorite(note.id)" v-bind="attrs" v-on="on">
                   <v-icon>mdi-star-outline</v-icon>
                 </v-btn>
               </template>
@@ -181,9 +181,16 @@ export default {
       this.getNotes();
     },
 
+    favorite(note_id) {
+      this.favoritable({
+        note_id: note_id,
+      });
+    },
+
     ...mapActions({
       noteRemove: 'Note/remove',
       removeTag: 'Tag/remove',
+      favoritable: 'Favorite/create',
     }),
   },
 
