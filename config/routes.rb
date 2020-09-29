@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  namespace :api do
-    namespace :v1 do
-      get 'favorites/index'
-      get 'favorites/create'
-      get 'favorites/destroy'
-    end
-  end
   devise_for :users
   devise_scope :user do
     authenticated :user do
@@ -23,6 +16,7 @@ Rails.application.routes.draw do
       resources :notes, only: [:create, :update, :index, :show, :destroy]
       resources :tags, only: [:index, :create, :destroy]
       resources :tag_notes, only: [:create, :destroy]
+      resources :favorites, only: [:index, :create, :destroy]
     end
   end
   
