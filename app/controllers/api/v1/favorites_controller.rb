@@ -3,7 +3,7 @@ class Api::V1::FavoritesController < ApplicationController
 
   def index
     @favorites = current_user.favorites
-    render :json => @favorites.to_json()
+    render :json => @favorites.to_json(:include => [:note])
   end
 
   def create

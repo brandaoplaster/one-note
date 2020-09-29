@@ -8,8 +8,8 @@ const Favorite = {
   },
 
   mutations: {
-    FAVORITES(state, notes) {
-      state.notes = notes;
+    FAVORITES(state, favorites) {
+      state.favorites = favorites;
     },
     
     REMOVE_FAVORITES(state, id) {
