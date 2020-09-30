@@ -7,12 +7,17 @@ class Api::V1::FavoritesController < ApplicationController
   end
 
   def create
-    @favoritable = Favorite.new(favorite_params)
+    count_favorite = Favorite.where(user_id: current_user.id).count
+    if count_favorite < 2
+      @favoritable = Favorite.new(favorite_params)
 
-    if @favoritable.save
-      render json: { message: 'Successfully favored!' }, status: :created
+      if @favoritable.save
+        render json: { message: 'Successfully favored!' }, status: :created
+      else
+        render json: { message: 'Error favorite this note!' }, status: :unprocessable_entity
+      end
     else
-      render json: { message: 'Error favorite this note!' }, status: :unprocessable_entity
+      render json: { message: "You can't favorite more than 5 notes" }, status: :unprocessable_entity
     end
   end
 
