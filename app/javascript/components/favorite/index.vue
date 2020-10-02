@@ -15,6 +15,8 @@
               </span>
             
             </v-card-title>
+            
+            <footer-action></footer-action>
           
           </v-card>
         </v-slide-item>
@@ -38,5 +40,9 @@ import{ mapState } from 'vuex';
     computed: mapState({
       favorites: state => state.Favorite.favorites,
     }),
+
+    components: {
+      FooterAction: () => import('../footerAction'),
+    }
   }
 </script>
