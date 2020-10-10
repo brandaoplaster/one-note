@@ -7,7 +7,7 @@
     <v-sheet v-if="favorites.length" class="mx-auto" elevation="1" max-width="1062">
       <v-slide-group v-model="model" class="pa-1" active-class="success" show-arrows>
         <v-slide-item v-for="favorite in favorites" :key="favorite.id">
-          <v-card color="grey" class="ma-1" height="200" width="200">
+          <v-card color="grey" class="ma-1" height="200" width="220">
             <v-card-title>
             
               <span class="title font-weight-light">
@@ -15,6 +15,10 @@
               </span>
             
             </v-card-title>
+
+            <v-card-text class="headline text-justify body-1">
+              {{ favorite.note.body.slice(0, 30) + '...' }}
+            </v-card-text>
             
             <footer-action></footer-action>
           

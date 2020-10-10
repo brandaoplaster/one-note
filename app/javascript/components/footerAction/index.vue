@@ -2,7 +2,7 @@
   <v-card-actions>
     <v-tooltip bottom>
       <template v-slot:activator="{ on, attrs }">
-        <v-btn icon @click="openModalAddTag(note.id)" v-bind="attrs" v-on="on" text color="grey">
+        <v-btn icon @click="openModalAddTag(note.id)" v-bind="attrs" v-on="on" text color="red">
           <v-icon>mdi-pound</v-icon>
         </v-btn>
       </template>

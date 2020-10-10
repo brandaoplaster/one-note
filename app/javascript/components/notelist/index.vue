@@ -140,6 +140,7 @@ export default {
     ModalAddTag: () => import('../modalAddTag'),
     ListFavorite: () => import('../favorite'),
     FooterAction: () => import('../footerAction'),
+    FooterAction: () => import('../footerAction'),
   }
 }
 </script>
