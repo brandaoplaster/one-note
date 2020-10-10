@@ -15,15 +15,17 @@ export default {
 
   mounted() {
     this.$store.dispatch('Note/getNotes');
+    this.$store.dispatch('Favorite/getFavorites');
   },
 
   computed: mapState({
     notes: state => state.Note.notes,
+    favorites: state => state.Favorites.favorites,
   }),
 
   components: {
-    NavBar: () => import('../navbar'),
-    NoteList: () => import('../notelist'),
+    NavBar: () => import('../../components/navbar'),
+    NoteList: () => import('../../components/notelist'),
   }
 }
 </script>
