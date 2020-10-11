@@ -49,9 +49,9 @@
       </v-col>
     </v-row>
     
-    <model-notes :selectedNote="selectedNote"  :showModal="showModal" @close-modal="closeModal"></model-notes>
-    <modal-shared :showModalShared="showModalShared" @close-modal-shared="closeModalShared"></modal-shared>
-    <modal-add-tag :selectedNoteId="selectedNoteId" :showModalAddTag="showModalAddTag" @close-modal-add-tag="closeModalTag"></modal-add-tag>
+    <!-- <model-notes :selectedNote="selectedNote"  :showModal="showModal" @close-modal="closeModal"></model-notes> -->
+    <!-- <modal-shared :showModalShared="showModalShared" @close-modal-shared="closeModalShared"></modal-shared> -->
+    <!-- <modal-add-tag :selectedNoteId="selectedNoteId" :showModalAddTag="showModalAddTag" @close-modal-add-tag="closeModalTag"></modal-add-tag> -->
   </v-container>
 </template>
 
@@ -135,11 +135,10 @@ export default {
   },
 
   components: {
-    ModelNotes: () => import('../modalNote'),
-    ModalShared: () => import('../modalshared'),
-    ModalAddTag: () => import('../modalAddTag'),
+    // ModelNotes: () => import('../modalNote'),
+    // ModalShared: () => import('../modalshared'),
+    // ModalAddTag: () => import('../modalAddTag'),
     ListFavorite: () => import('../favorite'),
-    FooterAction: () => import('../footerAction'),
     FooterAction: () => import('../footerAction'),
   }
 }

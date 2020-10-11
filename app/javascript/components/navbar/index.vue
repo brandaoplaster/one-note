@@ -15,10 +15,10 @@
       <v-icon left>mdi-content-save</v-icon> Criar nota
     </v-btn>      
   
-  <modal-create-note
+  <!-- <modal-create-note
     :showModalCreateNote="showModalCreateNote"
     @close-modal-create-note="closeModalCreateNote"
-  ></modal-create-note>
+  ></modal-create-note> -->
   </v-app-bar>
 </template>
 
@@ -29,7 +29,7 @@ export default {
   }),
 
   components: {
-    ModalCreateNote: () => import('../modalCreateNote'),
+    // ModalCreateNote: () => import('../modalCreateNote'),
   },
 
   methods: {

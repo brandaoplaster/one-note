@@ -3,7 +3,7 @@
 
     <v-dialog v-model="showModalCreateNote" persistent max-width="600">
      
-     <v-card>
+      <v-card>
         <v-card-title >
           <span class="headline">User Profile</span>
         </v-card-title>
