@@ -23,7 +23,11 @@ const Favorite = {
     getFavorites(context) {
       return new Promise((resolve, reject) => {
         Api.Favorite.index().then(response => {
-          context.commit('FAVORITES', response.data);
+          console.log(response.data);
+          let favorites = response.data.map((favorite) => 
+            favorite.note
+          );
+          context.commit('FAVORITES', favorites);
           resolve();
         }).catch(error => reject(error.response));
       });

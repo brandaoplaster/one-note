@@ -42,7 +42,7 @@
             </v-chip>
           </v-chip-group>
 
-          <!-- <v-card-actions>
+          <v-card-actions>
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
                 <v-btn icon @click="openModalAddTag(note.id)" v-bind="attrs" v-on="on" text color="red">
@@ -99,7 +99,7 @@
               </template>
               <span>Compartilhar nota</span>
             </v-tooltip> 
-          </v-card-actions> -->
+          </v-card-actions>
 
         </v-card>
       </v-col>
