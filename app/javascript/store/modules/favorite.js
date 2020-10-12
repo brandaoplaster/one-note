@@ -1,4 +1,5 @@
 import Api from '../../api';
+import favorite from '../../api/favorite';
 
 const Favorite = {
   namespaced: true,
@@ -22,7 +23,6 @@ const Favorite = {
     getFavorites(context) {
       return new Promise((resolve, reject) => {
         Api.Favorite.index().then(response => {
-          console.log(response.data);
           context.commit('FAVORITES', response.data);
           resolve();
         }).catch(error => reject(error.response));

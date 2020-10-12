@@ -2,7 +2,8 @@
   <v-main id="home">
     <v-container fluid ma-0 pa-1>
       <nav-bar></nav-bar>
-      <note-list :notes="notes"></note-list>
+      <note-list :items="favorites"></note-list>
+      <!-- <note-list :notes="notes"></note-list> -->
     </v-container>
   </v-main>
 </template>
@@ -20,7 +21,7 @@ export default {
 
   computed: mapState({
     notes: state => state.Note.notes,
-    favorites: state => state.Favorites.favorites,
+    favorites: state => state.Favorite.favorites,
   }),
 
   components: {
