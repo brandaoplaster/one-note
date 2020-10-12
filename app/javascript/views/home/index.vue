@@ -2,7 +2,8 @@
   <v-main id="home">
     <v-container fluid ma-0 pa-1>
       <nav-bar></nav-bar>
-      <note-list :notes="notes"></note-list>
+      <note-list :items="favorites"></note-list>
+      <!-- <note-list :notes="notes"></note-list> -->
     </v-container>
   </v-main>
 </template>
@@ -15,15 +16,17 @@ export default {
 
   mounted() {
     this.$store.dispatch('Note/getNotes');
+    this.$store.dispatch('Favorite/getFavorites');
   },
 
   computed: mapState({
     notes: state => state.Note.notes,
+    favorites: state => state.Favorite.favorites,
   }),
 
   components: {
-    NavBar: () => import('../navbar'),
-    NoteList: () => import('../notelist'),
+    NavBar: () => import('../../components/navbar'),
+    NoteList: () => import('../../components/notelist'),
   }
 }
 </script>

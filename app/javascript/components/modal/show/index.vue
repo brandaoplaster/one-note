@@ -22,7 +22,6 @@
               color="green"
               label
               outlined
-              @click=""
             >
               #{{tag.title}}
             </v-chip>

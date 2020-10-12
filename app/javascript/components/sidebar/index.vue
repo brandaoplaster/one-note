@@ -51,9 +51,9 @@
 
     </v-list>
 
-    <modal-profile :showModalProfile="showModalProfile"
+    <!-- <modal-profile :showModalProfile="showModalProfile"
       @close-modal-profile="closeModalProfile">
-    </modal-profile>
+    </modal-profile> -->
   </v-navigation-drawer>
 </template>
 
@@ -76,7 +76,7 @@ import { mapState } from 'vuex';
     }),
 
     components: {
-      ModalProfile: () => import('../modalProfile'),
+      // ModalProfile: () => import('../modalProfile'),
     },
 
     methods: {
