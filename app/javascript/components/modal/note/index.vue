@@ -1,7 +1,7 @@
 <template>
   <v-row justify="center">
 
-    <v-dialog v-model="showModalCreateNote" persistent max-width="600">
+    <v-dialog v-model="modalNote" persistent max-width="600">
      
       <v-card>
         <v-card-title >
@@ -51,7 +51,7 @@ import { mapActions } from 'vuex';
 
   export default {
     props: {
-      showModalCreateNote: {
+      modalNote: {
         required: true
       }
     },
@@ -62,7 +62,7 @@ import { mapActions } from 'vuex';
 
     methods: {
       close() {
-        this.$emit('close-modal-create-note', !this.showModalCreateNote);
+        this.$emit('close-modal-create-note', !this.modalNote);
       },
 
       getNotes(){
@@ -70,7 +70,6 @@ import { mapActions } from 'vuex';
       },
 
       saveNote(){
-        console.log('hi');
         this.noteCreate({
           title: this.title,
           body: this.body,

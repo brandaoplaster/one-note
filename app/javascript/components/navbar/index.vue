@@ -11,35 +11,16 @@
 
       </v-col>
     </v-row>
-    <v-btn class="ma-2" color="green darken-4" @click="openModalCreateNote">
-      <v-icon left>mdi-content-save</v-icon> Criar nota
-    </v-btn>      
-  
-  <!-- <modal-create-note
-    :showModalCreateNote="showModalCreateNote"
-    @close-modal-create-note="closeModalCreateNote"
-  ></modal-create-note> -->
+
   </v-app-bar>
 </template>
 
 <script>
 export default {
   data: () => ({
-    showModalCreateNote: false,
+    
   }),
 
-  components: {
-    // ModalCreateNote: () => import('../modalCreateNote'),
-  },
-
-  methods: {
-    openModalCreateNote() {
-      this.showModalCreateNote = !this.showModalCreateNote;
-    },
-
-    closeModalCreateNote() {
-      this.showModalCreateNote = !this.showModalCreateNote;
-    },
-  },
+  
 }
 </script>

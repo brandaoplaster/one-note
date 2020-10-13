@@ -45,7 +45,7 @@
           <v-card-actions>
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
-                <v-btn icon @click="openModalAddTag(note.id)" v-bind="attrs" v-on="on" text color="red">
+                <v-btn icon  v-bind="attrs" v-on="on" text color="red">
                   <v-icon>mdi-pound</v-icon>
                 </v-btn>
               </template>
@@ -63,7 +63,7 @@
 
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
-                <v-btn icon color="red" v-bind="attrs" v-on="on" @click="deleteNote(note.id)">
+                <v-btn icon color="red" v-bind="attrs" v-on="on">
                   <v-icon>mdi-delete</v-icon>
                 </v-btn>
               </template>
@@ -72,7 +72,7 @@
 
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
-                <v-btn icon color="blue" @click="openModal(note)" v-bind="attrs" v-on="on">
+                <v-btn icon color="blue" v-bind="attrs" v-on="on">
                   <v-icon>mdi-book-open</v-icon>
                 </v-btn>
               </template>
@@ -84,7 +84,7 @@
 
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
-                <v-btn icon @click="favorite(note.id)" v-bind="attrs" v-on="on">
+                <v-btn icon v-bind="attrs" v-on="on">
                   <v-icon>mdi-star-outline</v-icon>
                 </v-btn>
               </template>
@@ -93,7 +93,7 @@
           
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
-                <v-btn icon  @click="openModalShared" v-bind="attrs" v-on="on">
+                <v-btn icon v-bind="attrs" v-on="on">
                   <v-icon>mdi-share-variant</v-icon>
                 </v-btn>
               </template>
@@ -104,12 +104,31 @@
         </v-card>
       </v-col>
     </v-row>
+
+  <modal-note :selectedNote="selectedNote"  :modalNote="modalNote" @close-modal="closeModal">
+  </modal-note>
+
+  <!-- <modal-shared :showModalShared="showModalShared" @close-modal-shared="closeModalShared">
+  </modal-shared> -->
+
+  <!-- <modal-show></modal-show> -->
+
+  <!-- <modal-tag :selectedNoteId="selectedNoteId" :showModalAddTag="showModalAddTag" @close-modal-add-tag="closeModalTag">
+  </modal-tag> -->
   </v-container>  
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
-  data: () => ({ }),
+  data: () => ({
+    modalNote: false,
+    showModalShared: false,
+    showModalAddTag: false,
+    selectedNote: {},
+    selectedNoteId: '',
+   }),
 
   props: {
     items: {
@@ -117,5 +136,72 @@ export default {
       required: true,
     },
   },
+
+  components: {
+    ModalNote: () => import('../modal/note'),
+    ModalShared: () => import('../modal/shared'),
+    ModalShow: () => import('../modal/show'),
+    ModalTag: () => import('../modal/tag'),
+  },
+
+  methods: {
+    openModal(note) {
+      this.showModal = !this.showModal;
+      this.selectedNote = note;
+    },
+
+    closeModal() {
+      this.showModal = !this.showModal;
+    },
+
+    openModalShared() {
+      this.showModalShared = !this.showModalShared;
+    },
+
+    closeModalShared() {
+      this.showModalShared = !this.showModalShared;
+    },
+
+    openModalTag() {
+      this.showModalAddTag = !this.showModalAddTag;
+    },
+
+    closeModalTag() {
+      this.showModalAddTag = !this.showModalAddTag;
+    },
+
+    getNotes(){
+      this.$store.dispatch('Note/getNotes');
+    },
+
+    openModalAddTag(note_id) {
+      this.showModalAddTag = true;
+      this.selectedNoteId = note_id;
+    },
+
+    removeTag(id) {
+      this.removeTag({
+        id: id,
+      });
+      this.getNotes();
+    },
+
+    deleteNote(id) {
+      this.noteRemove({ id });
+      this.getNotes();
+    },
+
+    favorite(note_id) {
+      this.favoritable({
+        note_id: note_id,
+      });
+    },
+
+    ...mapActions({
+      noteRemove: 'Note/remove',
+      removeTag: 'Tag/remove',
+      favoritable: 'Favorite/create',
+    }),
+  }
 }
 </script>

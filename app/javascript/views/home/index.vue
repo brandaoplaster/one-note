@@ -2,8 +2,13 @@
   <v-main id="home">
     <v-container fluid ma-0 pa-1>
       <nav-bar></nav-bar>
-      <note-list :items="favorites"></note-list>
-      <!-- <note-list :notes="notes"></note-list> -->
+      <v-row>
+        <note-list :items="favorites"></note-list>
+      </v-row>
+
+      <v-row>
+        <note-list :items="notes"></note-list>
+      </v-row>
     </v-container>
   </v-main>
 </template>
