@@ -45,7 +45,7 @@
           <v-card-actions>
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
-                <v-btn icon  v-bind="attrs" v-on="on" text color="red">
+                <v-btn @click="openModalTag()" icon  v-bind="attrs" v-on="on" text color="red">
                   <v-icon>mdi-pound</v-icon>
                 </v-btn>
               </template>
@@ -93,7 +93,7 @@
           
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
-                <v-btn icon v-bind="attrs" v-on="on">
+                <v-btn @click="openModalShared()" icon v-bind="attrs" v-on="on">
                   <v-icon>mdi-share-variant</v-icon>
                 </v-btn>
               </template>
@@ -108,13 +108,18 @@
   <modal-note :selectedNote="selectedNote"  :modalNote="modalNote" @close-modal="closeModal">
   </modal-note>
 
-  <!-- <modal-shared :showModalShared="showModalShared" @close-modal-shared="closeModalShared">
-  </modal-shared> -->
+  <modal-shared 
+    :showModalShared="showModalShared" 
+    @close-modal-shared="closeModalShared">
+  </modal-shared>
 
-  <!-- <modal-show></modal-show> -->
 
-  <!-- <modal-tag :selectedNoteId="selectedNoteId" :showModalAddTag="showModalAddTag" @close-modal-add-tag="closeModalTag">
-  </modal-tag> -->
+  <modal-tag 
+    :selectedNoteId="selectedNoteId" 
+    :showModalAddTag="showModalAddTag" 
+    @close-modal-add-tag="closeModalTag"
+    >
+  </modal-tag>
   </v-container>  
 </template>
 
