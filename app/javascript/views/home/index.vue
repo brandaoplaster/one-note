@@ -3,6 +3,7 @@
     <v-container fluid ma-0 pa-1>
       <nav-bar></nav-bar>
       <v-row>
+        
         <note-list :items="favorites"></note-list>
       </v-row>
 

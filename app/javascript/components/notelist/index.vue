@@ -1,5 +1,10 @@
 <template>
-  <v-container class="grey lighten-5 pt-0">
+  <v-container class="grey lighten-5 pt-1">
+    <v-toolbar color="blue-grey darken-3" dark dense flat>
+          <v-toolbar-title class="body-1">
+            Upcoming Changes
+          </v-toolbar-title>
+        </v-toolbar>
     <v-row v-if="items.length > 0">
       <v-col v-for="note in items" :key="note.id" cols="6" md="4">
         <v-card class="pa-1" outlined tile>
@@ -84,7 +89,7 @@
 
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
-                <v-btn icon v-bind="attrs" v-on="on">
+                <v-btn @click="favorite(note.id)" icon v-bind="attrs" v-on="on">
                   <v-icon>mdi-star-outline</v-icon>
                 </v-btn>
               </template>
